@@ -40,6 +40,34 @@ def creat_dict(lst_words):
     d.update({lst_words[len(lst_words) - 1]: []})
     return d
 
+def generator(num_sent, start, dct_words, stop):
+    full_text = ''
+    for i in range(num_sent):
+        word = start[random.randint(0, len(start) - 1)]
+        sent = word
+        count = 1
+        while count <= 3:
+            word = dct_words[word][random.randint(0, len(dct_words[word]) - 1)]
+            if word not in stop:
+                count += 1
+                sent += ' ' + word
+            else:
+                word = dct_words[word][random.randint(0, len(dct_words[word]) - 1)]
+        while count < 20:
+            word = dct_words[word][random.randint(0, len(dct_words[word]) - 1)]
+            count += 1
+            sent += ' ' + word
+            if word in stop:
+                count = 1
+                break
+        if count == 20 and word not in stop:
+            if sent[-1] == ',':
+                sent = sent[:len(sent) - 1]
+            sent += '.'
+        full_text += sent + ' '
+    return full_text
+
+
 def stop_words(dct_words):
     stop = []
     words = dct_words.keys()
