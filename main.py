@@ -1,3 +1,9 @@
+'''Case-study Text-generator
+Developers:
+Zhambaeva D., Rashidova A., Ganbat S.
+'''
+
+
 def open_file():
     file = input('Enter the file name: ')
     while True:
@@ -75,6 +81,13 @@ def stop_words(dct_words):
         if word[-1] == '.' or word[-1] == '!' or word[-1] == '?':
             stop.append(word)
     return stop
+
+def start_words(lst_words):
+    start_words = []
+    for words in lst_words:
+        if words[0].issuper() and words.find('.') == -1:
+            start_words.append(words)
+        return start_words
 
 def main():
     file = open_file()
