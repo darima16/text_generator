@@ -1,6 +1,6 @@
 '''Case-study Text-generator
 Developers:
-Zhambaeva D., Rashidova A., Ganbat S.
+Zhambaeva D.(53%), Rashidova A.(48), Ganbat S.(50%)
 '''
 
 
@@ -93,4 +93,11 @@ def main():
     file = open_file()
     lst_words = text_editing(file_read(file))
     dct_words = creat_dict(lst_words)
+    start = start_words(lst_words)
+    stop = stop_words(dct_words)
     sent = int(input('Number of sentences: '))
+    print(generator(sent, start, dct_words,stop))
+
+
+if __name__ == '__main__':
+    main()
